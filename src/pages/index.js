@@ -4,6 +4,8 @@ export default function Home() {
   const [title, setTitle] = React.useState('');
   const [content, setContent] = React.useState('');
   const [user, setUser] = React.useState([]);
+  const [username, setUsername] = React.useState('');
+  const [lastName, setLastname] = React.useState('');
 
 
   function sendRes() {
@@ -11,8 +13,10 @@ export default function Home() {
       const data = await fetch("http://localhost:3000/api/hello", {
         method: "POST",
         body: JSON.stringify({
-          title: title,
-          content: content,
+          name: title,
+          firstName: content,
+          lastName: lastName,
+          username: username,
         })
       })
     }
@@ -30,8 +34,10 @@ export default function Home() {
   }
   return (
     <>
-      <input value={title} onChange={(e)=>setTitle(e.target.value)} />
-      <input value={content} onChange={(e) => setContent(e.target.value)} />
+      <input value={title} onChange={(e)=>setTitle(e.target.value)} /> <br />
+      <input value={content} onChange={(e) => setContent(e.target.value)} /> <br />
+      <input value={lastName} onChange={(e)=>setLastname(e.target.value)} /> <br />
+      <input value={username} onChange={(e) => setUsername(e.target.value)} /> <br />
       <button onClick={sendRes}>Send</button>
       <hr />
       <button onClick={getRes}>Get</button>

@@ -20,7 +20,7 @@ model User {
 }
 
 model Post {
-  id Int @id
+  id Int @id @default(autoincrement())
   userid String
   title String
   date String
